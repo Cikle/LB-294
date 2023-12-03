@@ -31,7 +31,3 @@ Das Frontend wurde mit HTML, CSS und JavaScript implementiert. Die Anwendung bie
 ### JSON-Schnittstellendokumentation:
 
 Die Anwendung verwendet JSON Bin zur Speicherung der Frage-Typen und Antworten. Die Schnittstelle ermöglicht das Lesen, Aktualisieren und Löschen von Daten. [Link zur JSONBin-API](https://api.jsonbin.io/v3/b/{binId})
-
-## Kontakt
-
-Bei Fragen oder Problemen kontaktieren Sie Cyril Lutziger unter [cyril.lutziger@beispiel.ch].
