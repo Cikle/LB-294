@@ -1,6 +1,6 @@
 # Coretext Chatbot
 
-Link zur webseite:[ https://cikle.github.io/LB-294/](https://cikle.github.io/LB-294-Coretext/)
+Link zur webseite: [Coretext](https://cikle.github.io/LB-294-Coretext/)
 
 ## Projektbeschrieb
 
