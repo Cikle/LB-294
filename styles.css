@@ -24,6 +24,7 @@ footer {
     margin-top: auto;
 }
 
+
 .content {
     flex: 1;
     display: flex;
@@ -35,7 +36,7 @@ footer {
 .chat-container {
     display: flex;
     flex-direction: column;
-    max-width: 80vh; 
+    max-width: 80vh;
     width: 100%;
     margin-bottom: 10px;
 }
@@ -126,8 +127,8 @@ footer {
 }
 
 .modal-content {
-    color: black; 
-    background-color: #515158; 
+    color: black;
+    background-color: #515158;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 8px;
@@ -142,18 +143,22 @@ footer {
 
 /* Add this style to move the button to the bottom */
 .modal-content button {
-    margin-top: 10px; /* Add space above the button */
+    margin-top: 10px;
+    /* Add space above the button */
     padding: 10px;
-    background-color: #2b2e2b; /* Updated button color */
+    background-color: #2b2e2b;
+    /* Updated button color */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition on hover */
 }
 
 .modal-content button:hover {
-    background-color: #afb6b0; /* Darker color on hover */
+    background-color: #afb6b0;
+    /* Darker color on hover */
 }
 
 .close {
