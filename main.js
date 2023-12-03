@@ -2,6 +2,7 @@ const binId = "656ca97754105e766fd909bc";
 const apiKey = "$2a$10$pDsRdUpzRuhUwdLmzHKcQefFrQrf4zg/DcHXvYu0Iq/3Zbrg89tyu";
 let data = [];
 
+// Funktion zum Anhängen einer Nachricht an den Chat
 function appendMessage(name, message, className) {
     const chatMessages = document.querySelector('.chat-messages');
     const isScrolledToBottom =
@@ -16,6 +17,7 @@ function appendMessage(name, message, className) {
 
     const messageText = document.createElement('div');
 
+    // Überprüfung, ob die Nachricht einen Wikipedia-Link enthält
     if (message.includes('https://en.wikipedia.org/wiki/')) {
         const link = document.createElement('a');
         link.href = message;
@@ -30,11 +32,13 @@ function appendMessage(name, message, className) {
     messageContainer.appendChild(messageText);
     chatMessages.appendChild(messageContainer);
 
+    // Scrollen zum unteren Ende des Chats, wenn vorher schon unten
     if (isScrolledToBottom) {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 }
 
+// Funktion zum Senden einer Nachricht
 function sendMessage() {
     const userInput = document.querySelector('.user-input').value.toLowerCase();
 
@@ -42,16 +46,20 @@ function sendMessage() {
         return;
     }
 
+    // Anhängen der Benutzernachricht an den Chat
     appendMessage('User', userInput, 'user-message');
 
     document.querySelector('.user-input').disabled = true;
     document.querySelector('.send-button').disabled = true;
 
+    // Überprüfung, ob die Benutzereingabe eine Suche auslöst
     if (userInput.includes("search for")) {
+        // Verarbeitung der Wikipedia-Suche
         const searchQuery = userInput.replace("search for", "").replace("what is", "").trim();
         const wikipediaLink = `https://en.wikipedia.org/wiki/${searchQuery.replace(/\s+/g, '_')}`;
         appendMessage('Cortex', `Here's what I found about <a href="${wikipediaLink}" target="_blank">${searchQuery}</a>:`, 'ai-message');
     } else {
+        // Abrufen von Daten von JSONBin-API
         fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -60,14 +68,17 @@ function sendMessage() {
         })
             .then(response => response.json())
             .then(fetchedData => {
+                // Finden und Anzeigen einer passenden KI-Antwort
                 const aiResponse = findResponse(userInput, fetchedData.record);
                 appendMessage('Cortex', aiResponse, 'ai-message');
 
                 data = fetchedData.record;
 
+                // Speichern der aktualisierten Daten in JSONBin
                 saveDataToJson(data);
             })
             .catch(error => {
+                // Fehlerbehandlung beim Abrufen von Antworten
                 console.error('An error occurred while fetching responses.');
                 console.error(error);
                 appendMessage('Cortex', 'An error occurred while fetching responses.', 'ai-message');
@@ -80,12 +91,14 @@ function sendMessage() {
     document.querySelector('.user-input').value = '';
 }
 
+// Funktion zum Verarbeiten von Tastatureingaben
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
         sendMessage();
     }
 }
 
+// Funktion zum Finden einer passenden Antwort
 function findResponse(userInput, responses) {
     const lowerCaseInput = userInput.toLowerCase();
 
@@ -98,6 +111,8 @@ function findResponse(userInput, responses) {
 
     return "Use 'Help' for available commands";
 }
+
+// Modals idee von ChatGPT, jedoch implementiert mithilfe von https://www.freecodecamp.org/news/how-to-build-a-modal-with-javascript/
 
 function openAddTypeModal() {
     document.getElementById('addTypeModal').style.display = 'block';
@@ -136,6 +151,8 @@ function addTypeFromModal() {
     closeAddTypeModal();
 }
 
+// Hilfe von ChatGPT und der JSONbin website https://jsonbin.io/api-reference
+
 function saveDataToJson(data) {
     fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
         method: 'PUT',
@@ -143,7 +160,7 @@ function saveDataToJson(data) {
             'Content-Type': 'application/json',
             'X-Master-Key': apiKey,
         },
-        body: JSON.stringify(data),  // Use the array directly without 'record'
+        body: JSON.stringify(data), 
     })
         .then(response => response.json())
         .then(result => {
