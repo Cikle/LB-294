@@ -1,64 +1,37 @@
 # Coretext Chatbot
 
-Dies ist ein einfacher Chatbot, der auf JSONbin für die Datenhaltung basiert. Der Chatbot kann Fragen verarbeiten und entsprechende vordefinierte Antworten liefern.
+Link zur webseite: https://cikle.github.io/LB-294/
 
 ## Projektbeschrieb
 
-Die Webapplikation ermöglicht die Verwaltung von Frage-Typen und dazugehörigen Antworten über eine Benutzeroberfläche.
+Die Coretext Chatbot-Webapplikation ermöglicht eine interaktive Kommunikation zwischen Benutzer und KI. Die Anwendung basiert auf einer Single Page Architecture (SPA) und dient dazu, Anfragen des Benutzers zu interpretieren und entsprechende Informationen bereitzustellen, mit vorgegebenen Fragen sowie auch die Antworten.
 
-## Entwicklungsumgebung
+### Funktionalitäten:
 
-- **IDE:** Visual Studio Code
-- **Verwendete Plugins:**
-  - Plugin/Erweiterung: [Plugin/Erweiterung Name]
-    - Verwendungszweck: [Beschreibung des Verwendungszwecks]
-  - Plugin/Erweiterung: [Plugin/Erweiterung Name]
-    - Verwendungszweck: [Beschreibung des Verwendungszwecks]
+1. **Chatbot-Interaktion:**
+   - Der Benutzer kann über die Benutzeroberfläche mit dem Chatbot interagieren, indem er Texteingaben macht.
+   - Der Chatbot verarbeitet die Eingaben und gibt entsprechende Antworten.
 
-## Testfälle
+2. **Dynamische Typenverwaltung:**
+   - Der Benutzer kann neue Frage-Typen hinzufügen und bestehende entfernen.
+   - Jeder Frage-Typ kann mehrere zugehörige Antwortmöglichkeiten beinhalten.
 
-### Hinzufügen eines neuen Frage-Typs
+3. **Wikipedia-Suchfunktion:**
+   - Wenn der Benutzer nach Informationen sucht (z.B., "search for [Thema]"), wird eine Verknüpfung zu Wikipedia generiert (noch nicht ganz ausgearbeitet).
 
-- **Testfall ID:** 1
-- **Beschreibung:** Der Benutzer fügt einen neuen Frage-Typ mit Antworten hinzu.
-- **Aktionen:**
-  - Benutzer fügt einen neuen Frage-Typ mit Antworten hinzu.
-- **Ergebnis:**
-  - Erfolgreiche Erstellung des neuen Frage-Typs.
+### Technologien:
 
-### Wikipedia-Suche
+- **Frontend:** HTML, CSS, JavaScript
+- **Backend:** JSONBin zur Datenspeicherung und -verwaltung
 
-- **Testfall ID:** 2
-- **Beschreibung:** Der Benutzer gibt den Befehl "search for Artificial Intelligence" ein.
-- **Aktionen:**
-  - Benutzer gibt den Befehl "search for Artificial Intelligence" ein.
-- **Ergebnis:**
-  - Erfolgreiche Generierung eines Wikipedia-Links.
+## Umsetzung
 
-### Löschen eines Frage-Typs
+Das Frontend wurde mit HTML, CSS und JavaScript implementiert. Die Anwendung bietet Funktionen zum Hinzufügen und Entfernen von Frage-Typen sowie eine Schnittstelle zur Wikipedia-Suche. Das Backend wurde mit einer JSON Datei in JSON-Bin implementiert.
 
-- **Testfall ID:** 3
-- **Beschreibung:** Der Benutzer entfernt einen bestehenden Frage-Typ.
-- **Aktionen:**
-  - Benutzer entfernt einen bestehenden Frage-Typ.
-- **Ergebnis:**
-  - Erfolgreiches Löschen des Frage-Typs und zugehöriger Antworten.
+### JSON-Schnittstellendokumentation:
 
-## JSONbin-Zugriff
-
-Die Daten werden auf JSONbin gespeichert. Sie können die JSON-Datei über den folgenden Link abrufen:
-
-[Permanenter Link zur JSON-Datei](https://api.jsonbin.io/v3/b/656c504912a5d37659a265be)
-
-**Hinweis:** Für den Zugriff auf private Bins ist der `X-Master-Key` oder `X-Access-Key` erforderlich.
-
-## Setup und Ausführung
-
-1. Klone das Repository: `git clone [Repository-URL]`
-2. Navigiere zum Projektverzeichnis: `cd [Projektverzeichnis]`
-3. Öffne die `index.html`-Datei in einem Webbrowser.
+Die Anwendung verwendet JSON Bin zur Speicherung der Frage-Typen und Antworten. Die Schnittstelle ermöglicht das Lesen, Aktualisieren und Löschen von Daten. [Link zur JSONBin-API](https://api.jsonbin.io/v3/b/{binId})
 
 ## Kontakt
 
-Bei Fragen oder Problemen kontaktieren Sie [Ihren Namen] unter [Ihre E-Mail-Adresse].
-
+Bei Fragen oder Problemen kontaktieren Sie Cyril Lutziger unter [cyril.lutziger@beispiel.ch].
