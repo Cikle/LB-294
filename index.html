@@ -13,7 +13,7 @@
     <header>
         <h1>Coretext Chatbot</h1>
     </header>
-    
+
     <div id="addTypeModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeAddTypeModal()">&times;</span>
@@ -42,6 +42,33 @@
         </div>
     </div>
 
+    <button onclick="openEditTypeModal()">Edit Type</button>
+
+    <!-- Fügen Sie ein Modal für die Bearbeitung hinzu -->
+    <div id="editTypeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditTypeModal()">&times;</span>
+            <h2>Edit Type</h2>
+            <div class="input-group">
+                <label for="editTypeId">Type ID:</label>
+                <input type="text" id="editTypeId" placeholder="Enter Type ID" required>
+            </div>
+            <div class="display-group" id="editDisplayGroup">
+                <!-- Here the existing data will be displayed -->
+            </div>
+            <div class="input-group">
+                <label for="editTypeInput">Question Types (comma-separated):</label>
+                <input type="text" id="editTypeInput" required>
+            </div>
+            <div class="input-group">
+                <label for="editResponsesInput">Responses (comma-separated):</label>
+                <input type="text" id="editResponsesInput" required>
+            </div>
+            <button onclick="editType()">Save Changes</button>
+        </div>
+    </div>
+
+
     <div class="content">
         <div class="chat-container">
             <div class="chat-messages"></div>
@@ -64,7 +91,7 @@
             made by Cyril Lutziger
         </p>
     </footer>
-    
+
     <script src="main.js"></script>
 
 </body>
