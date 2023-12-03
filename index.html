@@ -10,37 +10,30 @@
 
 <body>
 
-    <!-- Add Type Modal -->
     <div id="addTypeModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeAddTypeModal()">&times;</span>
             <h2>Add Type</h2>
-            <!-- Question Types Input -->
             <div class="input-group">
                 <label for="typeInput">Question Types (comma-separated):</label>
                 <input type="text" id="typeInput" required>
             </div>
-            <!-- Responses Input -->
             <div class="input-group">
                 <label for="responsesInput">Responses (comma-separated):</label>
                 <input type="text" id="responsesInput" required>
             </div>
-            <!-- Add Type Button -->
             <button onclick="addTypeFromModal()">Add Type</button>
         </div>
     </div>
 
-    <!-- Remove Type Modal -->
     <div id="removeTypeModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeRemoveTypeModal()">&times;</span>
             <h2>Remove Type</h2>
-            <!-- Input field for Type ID -->
             <div class="input-group">
                 <label for="removeTypeId">Type ID:</label>
                 <input type="text" id="removeTypeId" placeholder="Enter Type ID" required>
             </div>
-            <!-- Remove Type Button -->
             <button onclick="deleteType()">Remove Type</button>
         </div>
     </div>
