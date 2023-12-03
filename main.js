@@ -1,4 +1,4 @@
-const binId = "656ca97754105e766fd909bc";
+const binId = "656c5a3f0574da7622cf9278";
 const apiKey = "$2a$10$pDsRdUpzRuhUwdLmzHKcQefFrQrf4zg/DcHXvYu0Iq/3Zbrg89tyu";
 let data = [];
 
