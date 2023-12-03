@@ -1,0 +1,181 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #39393a;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 80vh; 
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    max-height: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-message {
+    text-align: right;
+    color: #ffffff;
+}
+
+.ai-message {
+    text-align: left;
+    color: #ffffff;
+}
+
+.message-name {
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 3px;
+}
+
+.user-input-container {
+    display: flex;
+    margin-bottom: 50px;
+    width: 40%;
+    z-index: 2;
+}
+
+.user-input {
+    flex: 1;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 4px 4px 4px;
+}
+
+.send-button {
+    width: 50px;
+    height: auto;
+    background-color: #28282b;
+    color: white;
+    border: none;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.send-button:hover {
+    background-color: #3d3d41;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    color: black; 
+    background-color: #515158; 
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+}
+
+/* Add this style to position the labels above the input boxes */
+.input-group {
+    margin-bottom: 10px;
+}
+
+/* Add this style to move the button to the bottom */
+.modal-content button {
+    margin-top: 10px; /* Add space above the button */
+    padding: 10px;
+    background-color: #2b2e2b; /* Updated button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.modal-content button:hover {
+    background-color: #afb6b0; /* Darker color on hover */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Additional styles for the modal buttons */
+.buttons-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.buttons-container button {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #28282b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons-container button:hover {
+    background-color: #28282b;
+}
