@@ -160,7 +160,7 @@ function saveDataToJson(data) {
             'Content-Type': 'application/json',
             'X-Master-Key': apiKey,
         },
-        body: JSON.stringify(data), 
+        body: JSON.stringify(data),
     })
         .then(response => response.json())
         .then(result => {
@@ -223,6 +223,64 @@ function deleteType() {
     alert(`Type with ID ${removeTypeId} removed successfully:\n${JSON.stringify(removedType)}`);
     // Close the Remove Type modal after deletion
     closeRemoveTypeModal();
+}
+
+// Funktion zum Öffnen des Bearbeitungsmodals
+function openEditTypeModal() {
+    document.getElementById('editTypeModal').style.display = 'block';
+}
+
+// Funktion zum Schließen des Bearbeitungsmodals
+function closeEditTypeModal() {
+    document.getElementById('editTypeModal').style.display = 'none';
+}
+
+// Funktion zum Bearbeiten einer vorhandenen Type
+function editType() {
+    // Get the ID entered by the user
+    const editTypeId = document.getElementById('editTypeId').value.trim();
+
+    // Validate if ID is provided
+    if (editTypeId === '') {
+        alert('Please enter a Type ID to edit.');
+        return;
+    }
+
+    // Convert the ID to a number
+    const typeId = parseInt(editTypeId, 10);
+
+    // Find the index of the type with the provided ID
+    const typeIndex = data.findIndex(type => type.id.toString() === editTypeId);
+
+    // Check if the type was found
+    if (typeIndex === -1) {
+        alert(`Type with ID ${editTypeId} not found.`);
+        return;
+    }
+
+    // Get the edited data from the input fields
+    const editTypeInput = document.getElementById('editTypeInput').value.trim();
+    const editResponsesInput = document.getElementById('editResponsesInput').value.trim();
+
+    if (editTypeInput === '' || editResponsesInput === '') {
+        alert('Please fill in both question types and responses.');
+        return;
+    }
+
+    const editedQuestionTypes = editTypeInput.split(',').map(type => type.trim());
+    const editedResponses = editResponsesInput.split(',').map(response => response.trim());
+
+    // Update the data array with the edited values
+    data[typeIndex].questionType = editedQuestionTypes;
+    data[typeIndex].responses = editedResponses;
+
+    // Save the updated data to JSONBin
+    saveDataToJson(data);
+
+    const formattedEditedQuestionTypes = editedQuestionTypes.join(', ');
+    alert(`Type with ID ${editTypeId} edited successfully:\nQuestion Types: ${formattedEditedQuestionTypes}`);
+    // Close the Edit Type modal after editing
+    closeEditTypeModal();
 }
 
 data = [];
