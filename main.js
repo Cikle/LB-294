@@ -1,5 +1,7 @@
 const binId = "656c5a3f0574da7622cf9278";
+const loginBinId = "656df5b50574da7622d01d81";
 const apiKey = "$2a$10$pDsRdUpzRuhUwdLmzHKcQefFrQrf4zg/DcHXvYu0Iq/3Zbrg89tyu";
+
 let data = [];
 
 // Funktion zum Anhängen einer Nachricht an den Chat
@@ -52,7 +54,7 @@ function sendMessage() {
     document.querySelector('.user-input').disabled = true;
     document.querySelector('.send-button').disabled = true;
 
-    // Überprüfung, ob die Benutzereingabe eine Suche auslöst
+    // Überprüfung, ob die Benutzereingabe eine Suche auslöst Nicht gut implementiert/noch nicht fertig
     if (userInput.includes("search for")) {
         // Verarbeitung der Wikipedia-Suche
         const searchQuery = userInput.replace("search for", "").replace("what is", "").trim();
@@ -91,7 +93,7 @@ function sendMessage() {
     document.querySelector('.user-input').value = '';
 }
 
-// Funktion zum Verarbeiten von Tastatureingaben
+// Funktion zum Verarbeiten von Tastatureingaben / Das der Enter Key gedrückt werden kann und dies dann somit abschickt
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
         sendMessage();
@@ -112,7 +114,7 @@ function findResponse(userInput, responses) {
     return "Use 'Help' for available commands";
 }
 
-// Modals idee von ChatGPT, jedoch implementiert mithilfe von https://www.freecodecamp.org/news/how-to-build-a-modal-with-javascript/
+// Modal idee von ChatGPT, jedoch implementiert mithilfe von https://www.freecodecamp.org/news/how-to-build-a-modal-with-javascript/
 
 function openAddTypeModal() {
     document.getElementById('addTypeModal').style.display = 'block';
@@ -151,7 +153,7 @@ function addTypeFromModal() {
     closeAddTypeModal();
 }
 
-// Hilfe von ChatGPT und der JSONbin website https://jsonbin.io/api-reference
+// Hilfe von ChatGPT und der JSONbin website von hier bis ganz unten https://jsonbin.io/api-reference
 
 function saveDataToJson(data) {
     fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
@@ -281,6 +283,61 @@ function editType() {
     alert(`Type with ID ${editTypeId} edited successfully:\nQuestion Types: ${formattedEditedQuestionTypes}`);
     // Close the Edit Type modal after editing
     closeEditTypeModal();
+}
+
+// Function to open login modal before action
+function openLoginModalBeforeAction(action) {
+    openLoginModal();
+    document.getElementById('loginModal').dataset.action = action;
+}
+
+// Function to open the login modal
+function openLoginModal() {
+    document.getElementById('loginModal').style.display = 'block';
+}
+
+// Function to close the login modal
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+}
+
+// Function to perform login using data from JSONBin
+function login() {
+    const usernameInput = document.getElementById('usernameInput').value;
+    const passwordInput = document.getElementById('passwordInput').value;
+
+    fetch(`https://api.jsonbin.io/v3/b/656e046b54105e766fd9836b`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': apiKey,
+        },
+    })
+        .then(response => response.json())
+        .then(loginData => {
+            const users = loginData.record;
+
+            const isValidUser = users.some(user => user.Username[0] === usernameInput && user.Password[0] === passwordInput);
+
+            if (isValidUser) {
+                const action = document.getElementById('loginModal').dataset.action;
+                closeLoginModal();
+
+                if (action === 'openAddTypeModal') {
+                    openAddTypeModal();
+                } else if (action === 'openRemoveTypeModal') {
+                    openRemoveTypeModal();
+                } else if (action === 'openEditTypeModal') {
+                    openEditTypeModal();
+                }
+            } else {
+                alert('Invalid credentials. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('An error occurred while fetching login data.');
+            console.error(error);
+            alert('An error occurred while fetching login data.');
+        });
 }
 
 data = [];
