@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <button onclick="openEditTypeModal()">Edit Type</button>
+    <button onclick="openLoginModalBeforeAction('openEditTypeModal')">Edit Type</button>
 
     <div id="editTypeModal" class="modal">
         <div class="modal-content">
@@ -78,11 +78,27 @@
         </div>
 
         <div class="buttons-container">
-            <button onclick="openAddTypeModal()">Add Type</button>
-            <button onclick="openRemoveTypeModal()">Remove Type</button>
+            <button onclick="openLoginModalBeforeAction('openAddTypeModal')">Add Type</button>
+            <button onclick="openLoginModalBeforeAction('openRemoveTypeModal')">Remove Type</button>
         </div>
     </div>
 
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h2>Login</h2>
+            <div class="input-group">
+                <label for="usernameInput">Username:</label>
+                <input type="text" id="usernameInput" required>
+            </div>
+            <div class="input-group">
+                <label for="passwordInput">Password:</label>
+                <input type="password" id="passwordInput" required>
+            </div>
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+    
     <footer>
         <p>&copy; 2023 Coretext Chatbot<br>
             made by Cyril Lutziger
