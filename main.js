@@ -153,7 +153,7 @@ function addTypeFromModal() {
     closeAddTypeModal();
 }
 
-// Hilfe von ChatGPT und der JSONbin website von hier bis ganz unten https://jsonbin.io/api-reference
+// Hilfe von ChatGPT und der JSONbin website https://jsonbin.io/api-reference
 
 function saveDataToJson(data) {
     fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
@@ -174,56 +174,44 @@ function saveDataToJson(data) {
 }
 
 function showRemoveTypeInput() {
-    // Show the input field for Type ID
     document.getElementById('removeTypeInputContainer').style.display = 'flex';
 }
 
 function openRemoveTypeModal() {
-    // Show the Remove Type modal
     document.getElementById('removeTypeModal').style.display = 'block';
 }
 
 function closeRemoveTypeModal() {
-    // Close the Remove Type modal
     document.getElementById('removeTypeModal').style.display = 'none';
 }
 
 function deleteType() {
-    // Get the ID entered by the user
     const removeTypeId = document.getElementById('removeTypeId').value.trim();
 
-    // Validate if ID is provided
     if (removeTypeId === '') {
         alert('Please enter a Type ID to remove.');
         return;
     }
 
-    // Convert the ID to a number
     const typeId = parseInt(removeTypeId, 10);
 
-    // Check if the ID is in the restricted range (1 to 10)
     if (typeId >= 1 && typeId <= 10) {
         alert('Types with ID 1 to 10 cannot be deleted.');
         return;
     }
 
-    // Find the index of the type with the provided ID
     const typeIndex = data.findIndex(type => type.id.toString() === removeTypeId);
 
-    // Check if the type was found
     if (typeIndex === -1) {
         alert(`Type with ID ${removeTypeId} not found.`);
         return;
     }
 
-    // Remove the type from the data array
     const removedType = data.splice(typeIndex, 1)[0];
 
-    // Save the updated data to JSONBin
     saveDataToJson(data);
 
     alert(`Type with ID ${removeTypeId} removed successfully:\n${JSON.stringify(removedType)}`);
-    // Close the Remove Type modal after deletion
     closeRemoveTypeModal();
 }
 
@@ -239,28 +227,22 @@ function closeEditTypeModal() {
 
 // Funktion zum Bearbeiten einer vorhandenen Type
 function editType() {
-    // Get the ID entered by the user
     const editTypeId = document.getElementById('editTypeId').value.trim();
 
-    // Validate if ID is provided
     if (editTypeId === '') {
         alert('Please enter a Type ID to edit.');
         return;
     }
 
-    // Convert the ID to a number
     const typeId = parseInt(editTypeId, 10);
 
-    // Find the index of the type with the provided ID
     const typeIndex = data.findIndex(type => type.id.toString() === editTypeId);
 
-    // Check if the type was found
     if (typeIndex === -1) {
         alert(`Type with ID ${editTypeId} not found.`);
         return;
     }
 
-    // Get the edited data from the input fields
     const editTypeInput = document.getElementById('editTypeInput').value.trim();
     const editResponsesInput = document.getElementById('editResponsesInput').value.trim();
 
@@ -272,36 +254,30 @@ function editType() {
     const editedQuestionTypes = editTypeInput.split(',').map(type => type.trim());
     const editedResponses = editResponsesInput.split(',').map(response => response.trim());
 
-    // Update the data array with the edited values
     data[typeIndex].questionType = editedQuestionTypes;
     data[typeIndex].responses = editedResponses;
 
-    // Save the updated data to JSONBin
     saveDataToJson(data);
 
     const formattedEditedQuestionTypes = editedQuestionTypes.join(', ');
     alert(`Type with ID ${editTypeId} edited successfully:\nQuestion Types: ${formattedEditedQuestionTypes}`);
-    // Close the Edit Type modal after editing
     closeEditTypeModal();
 }
 
-// Function to open login modal before action
 function openLoginModalBeforeAction(action) {
     openLoginModal();
     document.getElementById('loginModal').dataset.action = action;
 }
 
-// Function to open the login modal
 function openLoginModal() {
     document.getElementById('loginModal').style.display = 'block';
 }
 
-// Function to close the login modal
 function closeLoginModal() {
     document.getElementById('loginModal').style.display = 'none';
 }
 
-// Function to perform login using data from JSONBin
+// Funktion zum Login mit JSONBin
 function login() {
     const usernameInput = document.getElementById('usernameInput').value;
     const passwordInput = document.getElementById('passwordInput').value;
