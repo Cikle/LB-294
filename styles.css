@@ -136,29 +136,23 @@ footer {
     margin: auto;
 }
 
-/* Add this style to position the labels above the input boxes */
 .input-group {
     margin-bottom: 10px;
 }
 
-/* Add this style to move the button to the bottom */
 .modal-content button {
     margin-top: 10px;
-    /* Add space above the button */
     padding: 10px;
     background-color: #2b2e2b;
-    /* Updated button color */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* Smooth transition on hover */
 }
 
 .modal-content button:hover {
     background-color: #afb6b0;
-    /* Darker color on hover */
 }
 
 .close {
@@ -176,7 +170,6 @@ footer {
     cursor: pointer;
 }
 
-/* Additional styles for the modal buttons */
 .buttons-container {
     position: fixed;
     top: 10px;
