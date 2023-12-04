@@ -230,7 +230,7 @@ function openEditTypeModal() {
     document.getElementById('editTypeModal').style.display = 'block';
 }
 
-// Funktion zum Schließen des Bearbeitungsmodals
+// Funktion zum Schliessen des Bearbeitungsmodals
 function closeEditTypeModal() {
     document.getElementById('editTypeModal').style.display = 'none';
 }
